@@ -41,9 +41,11 @@ class PlacesViewController: UITableViewController {
     }
     
     
-    //Segue, when someone clicks on the cell
+    //Segue, when someone clicks on the cell (sends user to Map)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
+        performSegue(withIdentifier: "toMap", sender: nil)
+        
     }
     
 
