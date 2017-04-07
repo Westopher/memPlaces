@@ -9,6 +9,7 @@
 import UIKit
 
 var places = [Dictionary<String, String>()]
+var activePlace = -1
 
 class PlacesViewController: UITableViewController {
 
@@ -16,6 +17,10 @@ class PlacesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
         //sets a default places of the Taj Mahal
         if places.count == 1 && places[0].count == 0 {
@@ -26,8 +31,9 @@ class PlacesViewController: UITableViewController {
             
         }
         
+        activePlace = -1
+        
         table.reloadData()
- 
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +70,8 @@ class PlacesViewController: UITableViewController {
     
     //Segue, when someone clicks on the cell (sends user to Map)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        activePlace = indexPath.row
         
         performSegue(withIdentifier: "toMap", sender: nil)
         
