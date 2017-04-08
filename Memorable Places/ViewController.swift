@@ -39,6 +39,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
                                     let region = MKCoordinateRegion(center: coordinate, span: span)
                                     
                                     self.map.setRegion(region, animated: true)
+                                    
+                                    let annotation = MKPointAnnotation()
+                                    
+                                    annotation.coordinate = coordinate
+                                    
+                                    annotation.title = name
+                                    
+                                    self.map.addAnnotation(annotation)
+                                    
                                 
                                 }
                                 
