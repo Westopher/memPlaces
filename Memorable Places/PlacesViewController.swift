@@ -23,12 +23,20 @@ class PlacesViewController: UITableViewController {
     //code appears whenever this view appears, rather than when it loads as in func above
     override func viewDidAppear(_ animated: Bool) {
         
+        if let tempPlaces = UserDefaults.standard.object(forKey: "places") as? [Dictionary<String, String>] {
+            
+            places = tempPlaces
+            
+        }
+        
         //sets a default places of the Taj Mahal
         if places.count == 1 && places[0].count == 0 {
             
             places.remove(at: 0)
             
             places.append(["name":"Taj Mahal","lat":"27.175277","lon":"78.042128"])
+            
+            UserDefaults.standard.set(places, forKey: "places")
             
         }
         
@@ -46,6 +54,8 @@ class PlacesViewController: UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.delete {
             
             places.remove(at: indexPath.row)
+            
+            UserDefaults.standard.set(places, forKey: "places")
             
             table.reloadData()
         }
