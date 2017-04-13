@@ -35,10 +35,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
         } else {
             
-            
-            
-        }
-            
             //Get place details to display on map
             
             if places.count > activePlace {
@@ -82,7 +78,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
         }
         
-    
+    }    
     
     
     func longpress(gestureRecognizer: UIGestureRecognizer){
