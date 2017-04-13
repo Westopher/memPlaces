@@ -20,6 +20,7 @@ class PlacesViewController: UITableViewController {
  
     }
     
+    //code appears whenever this view appears, rather than when it loads as in func above
     override func viewDidAppear(_ animated: Bool) {
         
         //sets a default places of the Taj Mahal
@@ -49,6 +50,7 @@ class PlacesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return places.count
+        
     }
 
     //sets the content of the row by defining cell as a variable and then returning that variable

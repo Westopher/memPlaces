@@ -71,9 +71,58 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func longpress(gestureRecognizer: UIGestureRecognizer){
         
-        print("long press")
+        if gestureRecognizer.state == UIGestureRecognizerState.began {
         
-    }
+            let touchPoint = gestureRecognizer.location(in: self.map)
+        
+            let newCoordinate = self.map.convert(touchPoint, toCoordinateFrom: self.map)
+        
+            let location = CLLocation(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
+            
+            var title = ""
+            
+            CLGeoCoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+                
+                if error != nil {
+                    
+                    print(error)
+                    
+                } else {
+                    
+                    if let placemark = placemarks?[0] {
+                        
+                        if placemark.subThoroughfare != nil {
+                            
+                            title += placemark.subThoroughtfare! + " "
+                            
+                        }
+                        
+                        if placemark.thoroughfare != nil {
+                            
+                            title += placemark.thoroughfare!
+                        }
+                        
+                    }
+                    
+                }
+                
+                
+                
+                
+            }
+            
+            })
+            
+        
+            let annotation = MKPointAnnotation()
+        
+            annotation.coordinate = newCoordinate
+        
+            annotation.title = "Temp title"
+        
+            self.map.addAnnotation(annotation)
+            
+        }
     
     
     
