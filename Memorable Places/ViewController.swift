@@ -81,7 +81,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             var title = ""
             
-            CLGeoCoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+            CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 
                 if error != nil {
                     
@@ -93,7 +93,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                         
                         if placemark.subThoroughfare != nil {
                             
-                            title += placemark.subThoroughtfare! + " "
+                            title += placemark.subThoroughfare! + " "
                             
                         }
                         
@@ -106,21 +106,27 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     
                 }
                 
+                if title == "" {
+                    
+                    title = "Added \(NSDate())"
+                    
+                }
                 
-                
-                
-            }
             
-            })
+            } )
             
         
             let annotation = MKPointAnnotation()
         
             annotation.coordinate = newCoordinate
         
-            annotation.title = "Temp title"
+            annotation.title = title
         
             self.map.addAnnotation(annotation)
+            
+            places.append(["name":title,"lat":String(newCoordinate.latitude),"lon":String(newCoordinate.longitude)])
+            
+            print(places)
             
         }
     
@@ -128,7 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     
 
-    override func didReceiveMemoryWarning() {
+     func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -136,3 +142,4 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
 }
 
+}
