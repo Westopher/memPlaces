@@ -112,9 +112,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     
                 }
                 
-            
-            } )
-            
         
             let annotation = MKPointAnnotation()
         
@@ -128,18 +125,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             print(places)
             
-        }
+        })
     
-    
-    
-    
-
-     func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-
+    func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        }
 }
-
 }
